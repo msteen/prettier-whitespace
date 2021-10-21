@@ -1,0 +1,28 @@
+{
+  "name": "prettier-whitespace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Make whitespace, even in string literals, prettier too",
+  "bin": "lib/bin.js",
+  "keywords": [
+    "prettier",
+    "trim",
+    "trailing",
+    "whitespace"
+  ],
+  "author": {
+    "name": "Matthijs Steen",
+    "email": "emailmatthijs@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.7.10",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {
+    "glob-base": "^0.3.0",
+    "prettier": "^2.4.1",
+    "trim-trailing": "github:msteen/trim-trailing"
+  }
+}
