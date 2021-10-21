@@ -3,6 +3,19 @@ import { dirname, join } from "path"
 import { resolveConfig, resolveConfigFile } from "prettier"
 import { exit } from "process"
 import { Args, editFiles, parseArgs } from "trim-trailing"
+import { inspect } from "util"
+
+export function prettyprint(arg: any): string {
+  return inspect(arg, {
+    depth: null,
+    colors: true,
+    breakLength: 110,
+  })
+}
+
+export function log(...args: any[]): void {
+  console.log(...args.map(prettyprint))
+}
 
 async function main(args: Args) {
   const base = globBase(args.glob).base
@@ -17,17 +30,13 @@ async function main(args: Args) {
     console.error("Could not find prettier options.", base)
     exit(1)
   }
-  const wrongIndent = indenter(!options.useTabs)
-  const rightIndent = indenter(options.useTabs)
-  const indentRegex = new RegExp("^(?:" + wrongIndent + ")+", "gm")
+  const wrongIndentLength = !options.useTabs ? 1 : options.tabWidth
+  const rightIndent = options.useTabs ? "\t" : " ".repeat(options.tabWidth)
+  const indentRegex = new RegExp("^(?:" + (!options.useTabs ? "\\t" : " ".repeat(options.tabWidth)) + ")+", "gm")
   return editFiles(args, (contents) =>
     contents
-      .replace(indentRegex, (match) => rightIndent.repeat(match.length / wrongIndent.length))
+      .replace(indentRegex, (match) => rightIndent.repeat(match.length / wrongIndentLength))
       .replace(/[ \t]+$/gm, ""),
   )
 }
 main(parseArgs(__dirname))
-
-function indenter(options: any, useTabs: boolean = options.useTabs): string {
-  return useTabs ? "\t" : " ".repeat(options.tabWidth)
-}
