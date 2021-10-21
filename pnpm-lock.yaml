@@ -11,7 +11,7 @@ specifiers:
 dependencies:
   glob-base: 0.3.0
   prettier: 2.4.1
-  trim-trailing: github.com/msteen/trim-trailing/b4bcc583fc5c8f89e4841b33fb12957cf285abe8
+  trim-trailing: github.com/msteen/trim-trailing/e026c08f6cde1ab269f77506bc8ddea105a69d64
 
 devDependencies:
   '@types/node': 16.11.2
@@ -240,8 +240,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  github.com/msteen/trim-trailing/b4bcc583fc5c8f89e4841b33fb12957cf285abe8:
-    resolution: {tarball: https://codeload.github.com/msteen/trim-trailing/tar.gz/b4bcc583fc5c8f89e4841b33fb12957cf285abe8}
+  github.com/msteen/trim-trailing/e026c08f6cde1ab269f77506bc8ddea105a69d64:
+    resolution: {tarball: https://codeload.github.com/msteen/trim-trailing/tar.gz/e026c08f6cde1ab269f77506bc8ddea105a69d64}
     name: trim-trailing
     version: 0.1.0
     hasBin: true

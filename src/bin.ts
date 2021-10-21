@@ -26,7 +26,7 @@ async function main(args: Args) {
       .replace(/[ \t]+$/gm, ""),
   )
 }
-main(parseArgs("prettier-strings"))
+main(parseArgs(__dirname))
 
 function indenter(options: any, useTabs: boolean = options.useTabs): string {
   return useTabs ? "\t" : " ".repeat(options.tabWidth)
